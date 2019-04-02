@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
+  "dependencies": {
+    "@babel/core": "^7.4.0",
+    "@vue-tsx/vue": "^1.0.0",
+    "@vue/babel-preset-jsx": "^1.0.0-beta.3",
+    "babel-loader": "^8.0.5",
+    "ts-loader": "^5.3.3",
+    "tslib": "^1.9.3",
+    "typescript": "^3.4.1",
+    "vue": "^2.6.10",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  }
+}

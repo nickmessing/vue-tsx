@@ -1,0 +1,13 @@
+{
+  "name": "@vue-tsx/vue",
+  "version": "1.0.0",
+  "module": "src/index.js",
+  "license": "MIT",
+  "typings": "typings/index.d.ts",
+  "dependencies": {
+    "csstype": "^2.6.3",
+    "tslib": "^1.9.3",
+    "typescript": "^3.4.1",
+    "vue": "^2.6.10"
+  }
+}

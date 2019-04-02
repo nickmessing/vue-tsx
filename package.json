@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "postinstall": "lerna bootstrap"
+  },
+  "devDependencies": {
+    "lerna": "^3.13.1"
+  },
+  "dependencies": {
+    "vue-property-decorator": "^8.1.0"
+  }
+}
