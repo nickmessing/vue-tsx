@@ -33,9 +33,8 @@ export namespace Vue {
     /**
      * Typescript trick, won't work in code
      */
-    $_props: Options['props'] extends {}
-      ? Options['props']
-      : {} & Listeners<Options['events'] extends {} ? Options['events'] : {}>
+    $_props: (Options['props'] extends {} ? Options['props'] : {}) &
+      (Listeners<Options['events'] extends {} ? Options['events'] : {}>)
   }
 
   interface VNode {

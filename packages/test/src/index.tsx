@@ -9,8 +9,7 @@ type Props =
 
 interface Events {
   event1: string
-  event2?: number
-  event3: void
+  event2: number
 }
 
 class MyComponent extends Component<{
@@ -18,6 +17,7 @@ class MyComponent extends Component<{
   events: Events
 }> {
   text = 'test'
+  counter = 1
 
   render(h: Vue.CreateElement) {
     return (
@@ -27,6 +27,8 @@ class MyComponent extends Component<{
           on={{
             input: ($event: any) => {
               this.text = $event.currentTarget.value
+              this.$emit('event1', this.text)
+              this.$emit('event2', ++this.counter)
             },
           }}
         />
@@ -45,7 +47,7 @@ class Cmp extends Component {
     console.log(this)
   }
 
-  @Watch('data', {deep: true})
+  @Watch('data', { deep: true })
   myMethod(val: string, oldVal: string) {
     console.log('data Changed', val, oldVal)
   }
@@ -63,9 +65,17 @@ class Cmp extends Component {
             },
           }}
         />
-        <br/>
+        <br />
         Comp1:
-        <MyComponent a={2} b="text" />
+        <MyComponent
+          a={2}
+          b="text"
+          on={{
+            event2: data => {
+              console.log(data)
+            },
+          }}
+        />
         Comp2:
         <MyComponent
           c={[3, 'alpha']}
