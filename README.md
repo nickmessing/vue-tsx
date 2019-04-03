@@ -1,6 +1,14 @@
-# Vue TSX
-
 This Repository aims to add full TSX support to the existing [vuejs/jsx](https://github.com/vuejs/jsx) Babel preset.
+
+
+# Notes
+
+Keep in mind that this project is currently beeing developed.
+Expect bug and unexpected behavior. DONT USE THIS IN PRODUCTION.
+
+Please feel free to open an Issue if you encounter problems, have a feature request or questions about the future of this project.
+
+Vue + TSX = ♥️
 
 # Installation
 
@@ -26,6 +34,10 @@ Then add the preset to `.babelrc`:
 - [Use Component in TSX](#Use-Component-in-TSX)
 - [Watch Methode](#Watch-Methode)
 - [Implement Router](#Implement-Router)
+
+external:
+- [syntax information](https://github.com/vuejs/jsx#syntax)
+- [directives information](https://github.com/vuejs/jsx/tree/dev/packages/babel-plugin-transform-vue-jsx#vue-directives)
 
 ---
 ### Mounting your app
@@ -180,18 +192,3 @@ This repo is only compatible with:
 
 - **Babel 7+**. For Babel 6 support, use [vuejs/babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx)
 - **Vue 2+**. JSX is not supported for older versions.
-
-# Notes
-
-Keep in mind that this project is currently beeing developed.
-Expect bug and unexpected behavior. DONT USE THIS IN PRODUCTION.
-
-Please feel free open a Issue if you encounter problems, have a feature request or questions about the future of this project.
-
-Vue + TSX = ♥️
-
----
-
-[more syntax information](https://github.com/vuejs/jsx#syntax)
-
-[more directives information](https://github.com/vuejs/jsx/tree/dev/packages/babel-plugin-transform-vue-jsx#vue-directives)
