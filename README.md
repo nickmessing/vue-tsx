@@ -18,8 +18,6 @@ Then add the preset to `.babelrc`:
 }
 ```
 
----
-
 # Getting Started
 
 - [Mounting your app](#Mounting-your-app)
@@ -29,6 +27,7 @@ Then add the preset to `.babelrc`:
 - [Watch Methode](#Watch-Methode)
 - [Implement Router](#Implement-Router)
 
+---
 ### Mounting your app
 
 ```jsx
