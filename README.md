@@ -3,8 +3,10 @@ This Repository aims to add full TSX support to the existing [vuejs/jsx](https:/
 
 # Notes
 
-Keep in mind that this project is currently beeing developed.
-Expect bug and unexpected behavior. DONT USE THIS IN PRODUCTION.
+Keep in mind that this project is currently being developed.
+Expect bugs and unexpected behavior.
+
+DO NOT USE THIS IN PRODUCTION.
 
 Please feel free to open an Issue if you encounter problems, have a feature request or questions about the future of this project.
 
@@ -188,7 +190,7 @@ new Vue({
 
 # Compatibility
 
-This repo is only compatible with:
+This Repo is only compatible with:
 
 - **Babel 7+**. For Babel 6 support, use [vuejs/babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx)
 - **Vue 2+**. JSX is not supported for older versions.
