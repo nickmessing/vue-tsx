@@ -20,6 +20,15 @@ Then add the preset to `.babelrc`:
 
 # Getting Started
 
+**Content**
+
+- [Mounting your app](#Mounting-your-app)
+- [Creating Class Component](#Creating-Class-Component)
+- [Define Component Props](#Define-Component-Props)
+- [Use Component in TSX](#Use-Component-in-TSX)
+- [Watch Methode](#Watch-Methode)
+- [Implement Router](#Implement-Router)
+
 ### Mounting your app
 
 ```tsx
@@ -37,6 +46,7 @@ new Vue({
 })
 ```
 
+---
 ### Creating Class Component
 
 ```tsx
@@ -59,17 +69,21 @@ export class Hello extends Component {
 }
 ```
 
+---
 ### Define Component Props
 
 ```tsx
 import { Component } from 'vue-tsx';
 
+// defined Props interface
 interface Props {
   myText: string
 }
 
+// add Props Interface to Component Type Generics
 export class Hello extends Component<{Props}> {
 
+  // access Props using $attrs
   private text = this.$attrs.myText
 
   render() {
@@ -78,6 +92,7 @@ export class Hello extends Component<{Props}> {
 }
 ```
 
+---
 ### Use Component in TSX
 
 ```tsx
@@ -89,11 +104,12 @@ new Vue({
 
   render() {
     // insert Component
-    return <Hello myText={'Hallo Welt'} />
+    return <Hello myText="Hallo Welt" />
   },
 })
 ```
 
+---
 ### Watch Methode
 
 ```tsx
@@ -115,6 +131,7 @@ export class Hello extends Component {
 }
 ```
 
+---
 ### Implement Router
 
 ```tsx
@@ -173,6 +190,8 @@ Expect bug and unexpected behavior. DONT USE THIS IN PRODUCTION.
 Please feel free open a Issue if you encounter problems, have a feature request or questions about the future of this project.
 
 Vue + TSX = ♥️
+
+---
 
 [more syntax information](https://github.com/vuejs/jsx#syntax)
 
