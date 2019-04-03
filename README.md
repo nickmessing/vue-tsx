@@ -167,7 +167,7 @@ new Vue({
   el: document.getElementById('app'),
   router,
 
-  render(h) {
+  render() {
     return <div>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/about">about</RouterLink>
