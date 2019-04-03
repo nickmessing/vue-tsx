@@ -31,7 +31,7 @@ Then add the preset to `.babelrc`:
 
 ### Mounting your app
 
-```tsx
+```jsx
 // import Vue Class
 import { Vue } from 'vue-tsx';
 
@@ -49,7 +49,7 @@ new Vue({
 ---
 ### Creating Class Component
 
-```tsx
+```jsx
 // import Component Class
 import { Component } from 'vue-tsx';
 
@@ -72,7 +72,7 @@ export class Hello extends Component {
 ---
 ### Define Component Props
 
-```tsx
+```jsx
 import { Component } from 'vue-tsx';
 
 // defined Props interface
@@ -95,7 +95,7 @@ export class Hello extends Component<{Props}> {
 ---
 ### Use Component in TSX
 
-```tsx
+```jsx
 import { Vue } from 'vue-tsx';
 import { Hello } from './components/Hello'
 
@@ -112,7 +112,7 @@ new Vue({
 ---
 ### Watch Methode
 
-```tsx
+```jsx
 import { Component, Watch } from 'vue-tsx';
 
 export class Hello extends Component {
@@ -134,7 +134,7 @@ export class Hello extends Component {
 ---
 ### Implement Router
 
-```tsx
+```jsx
 import { Vue, Router } from 'vue-tsx';
 
 const router = new Router({
