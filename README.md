@@ -34,7 +34,7 @@ Then add the preset to `.babelrc`:
 - [Creating Class Component](#Creating-Class-Component)
 - [Define Component Props](#Define-Component-Props)
 - [Use Component in TSX](#Use-Component-in-TSX)
-- [Watch Methode](#Watch-Methode)
+- [Watch Method](#Watch-Method)
 - [Implement Router](#Implement-Router)
 
 external:
@@ -69,7 +69,7 @@ import { Component } from '@vue-tsx/vue';
 // extend Abstract Component
 export class Hello extends Component {
 
-  // defined data
+  // define data
   private text = 'Hello World'
 
   // implement render method
@@ -88,7 +88,7 @@ export class Hello extends Component {
 ```jsx
 import { Component } from '@vue-tsx/vue';
 
-// defined Props interface
+// define Props interface
 interface Props {
   myText: string
 }
@@ -123,7 +123,7 @@ new Vue({
 ```
 
 ---
-### Watch Methode
+### Watch Method
 
 ```jsx
 import { Component, Watch } from '@vue-tsx/vue';
