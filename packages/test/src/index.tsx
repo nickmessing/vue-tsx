@@ -40,6 +40,19 @@ class MyComponent extends Component<{
   }
 }
 
+class SSComponent extends Component<{
+  scopedSlots: {
+    default?: [string, number?]
+  }
+}> {
+  render(h: Vue.CreateElement) {
+    if (this.$scopedSlots.default) {
+      return this.$scopedSlots.default('a', 1)
+    }
+    return <div>No slot :(</div>
+  }
+}
+
 class Cmp extends Component {
   data = 'Something here'
 
@@ -57,14 +70,7 @@ class Cmp extends Component {
       <div>
         {this.data}
         <br />
-        <input
-          value={this.data}
-          on={{
-            input: $event => {
-              this.data = $event.currentTarget.value
-            },
-          }}
-        />
+        <input vModel={this.data} />
         <br />
         Comp1:
         <MyComponent
@@ -81,6 +87,14 @@ class Cmp extends Component {
           c={[3, 'alpha']}
           style={{
             color: 'red',
+          }}
+        />
+        <hr />
+        <SSComponent />
+        <hr />
+        <SSComponent
+          scopedSlots={{
+            default: (arg1, arg2) => <div>This is a scoped slot {JSON.stringify({ arg1, arg2 })}</div>,
           }}
         />
       </div>

@@ -15,10 +15,16 @@ export namespace Vue {
     }[keyof Events]
   >
   type Listeners<Events> = { on?: { [P in keyof Events]?: (payload: Events[P]) => void } }
+  type ScopedSlot<Args, T = Exclude<Args, void>> = (...args: T extends any[] ? T : []) => VNode
+  type ScopedSlots<SS> = { [T in keyof SS]: SS[T] extends void ? void | ScopedSlot<SS[T]> : ScopedSlot<SS[T]> }
+  type ScopedSlotsProp<SS> = {} extends ScopedSlots<SS>
+    ? { scopedSlots?: ScopedSlots<SS> }
+    : { scopedSlots: ScopedSlots<SS> }
 
   interface DefaultOptions {
-    props?: {}
-    events?: {}
+    props?: Record<string, any>
+    events?: Record<string, any>
+    scopedSlots?: Record<string, any[] | undefined>
   }
 
   interface Component<Options extends DefaultOptions> {
@@ -31,10 +37,14 @@ export namespace Vue {
      */
     $emit: Emit<Options['events'] extends {} ? Options['events'] : {}>
     /**
+     * Scoped slots
+     */
+    $scopedSlots: ScopedSlots<Options['scopedSlots'] extends {} ? Options['scopedSlots'] : {}>
+    /**
      * Typescript trick, won't work in code
      */
     $_props: (Options['props'] extends {} ? Options['props'] : {}) &
-      (Listeners<Options['events'] extends {} ? Options['events'] : {}>)
+      (Listeners<Options['events'] extends {} ? Options['events'] : {}>) & (ScopedSlotsProp<Options['scopedSlots'] extends {} ? Options['scopedSlots'] : {}>)
   }
 
   interface VNode {
@@ -491,6 +501,9 @@ export namespace Vue {
     results?: number
     security?: string
     unselectable?: 'on' | 'off'
+
+    // Directives
+    vModel?: any
   }
 
   // All the WAI-ARIA 1.1 attributes from https://www.w3.org/TR/wai-aria-1.1/
