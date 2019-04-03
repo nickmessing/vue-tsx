@@ -18,9 +18,9 @@ Then add the preset to `.babelrc`:
 }
 ```
 
-# Getting Started
+---
 
-**Content**
+# Getting Started
 
 - [Mounting your app](#Mounting-your-app)
 - [Creating Class Component](#Creating-Class-Component)
