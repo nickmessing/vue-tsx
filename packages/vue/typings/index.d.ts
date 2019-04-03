@@ -27,7 +27,7 @@ export namespace VueTSX {
     scopedSlots?: Record<string, any[] | undefined>
   }
 
-  interface Component<Options extends DefaultOptions> {
+  interface Component<Options extends DefaultOptions> extends ComponentInstance {
     /**
      * Attributes
      */
@@ -61,6 +61,8 @@ export namespace VueTSX {
   }
 
   interface Instance {}
+
+  interface ComponentInstance {}
 
   interface Options {
     el: HTMLElement | string | null

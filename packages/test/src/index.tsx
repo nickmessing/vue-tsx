@@ -104,7 +104,12 @@ class View1 extends Component {
 }
 class View2 extends Component {
   render(h: VueTSX.CreateElement) {
-    return <div>Second page :P</div>
+    return (
+      <div>
+        Second page :P
+        <button on={{ click: () => this.$router.push('/') }}>Go Home</button>
+      </div>
+    )
   }
 }
 
