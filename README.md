@@ -32,7 +32,7 @@ Then add the preset to `.babelrc`:
 
 ```jsx
 // import Vue Class
-import { Vue } from 'vue-tsx';
+import { Vue } from '@vue-tsx/vue';
 
 new Vue({
   // pass root element
@@ -50,7 +50,7 @@ new Vue({
 
 ```jsx
 // import Component Class
-import { Component } from 'vue-tsx';
+import { Component } from '@vue-tsx/vue';
 
 // extend Abstract Component
 export class Hello extends Component {
@@ -72,7 +72,7 @@ export class Hello extends Component {
 ### Define Component Props
 
 ```jsx
-import { Component } from 'vue-tsx';
+import { Component } from '@vue-tsx/vue';
 
 // defined Props interface
 interface Props {
@@ -95,7 +95,7 @@ export class Hello extends Component<{Props}> {
 ### Use Component in TSX
 
 ```jsx
-import { Vue } from 'vue-tsx';
+import { Vue } from '@vue-tsx/vue';
 import { Hello } from './components/Hello'
 
 new Vue({
@@ -112,7 +112,7 @@ new Vue({
 ### Watch Methode
 
 ```jsx
-import { Component, Watch } from 'vue-tsx';
+import { Component, Watch } from '@vue-tsx/vue';
 
 export class Hello extends Component {
 
@@ -134,7 +134,7 @@ export class Hello extends Component {
 ### Implement Router
 
 ```jsx
-import { Vue, Router } from 'vue-tsx';
+import { Vue, Router } from '@vue-tsx/vue';
 
 const router = new Router({
   mode: 'history',
