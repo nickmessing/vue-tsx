@@ -2,7 +2,7 @@
 
 This Repository aims to add full TSX support to the existing [vuejs/jsx](https://github.com/vuejs/jsx) Babel preset.
 
-## Installation
+# Installation
 
 Install the package and babel preset with:
 
@@ -18,9 +18,9 @@ Then add the preset to `.babelrc`:
 }
 ```
 
-## Getting Started
+# Getting Started
 
-##### Mounting your app
+### Mounting your app
 
 ```tsx
 // import Vue Class
@@ -37,7 +37,7 @@ new Vue({
 })
 ```
 
-##### Creating Class Component
+### Creating Class Component
 
 ```tsx
 // import Component Class
@@ -59,7 +59,7 @@ export class Hello extends Component {
 }
 ```
 
-##### Define Component Props
+### Define Component Props
 
 ```tsx
 import { Component } from 'vue-tsx';
@@ -78,7 +78,7 @@ export class Hello extends Component<{Props}> {
 }
 ```
 
-##### Use Component in TSX
+### Use Component in TSX
 
 ```tsx
 import { Vue } from 'vue-tsx';
@@ -94,7 +94,7 @@ new Vue({
 })
 ```
 
-##### Watch Methode
+### Watch Methode
 
 ```tsx
 import { Component, Watch } from 'vue-tsx';
@@ -115,7 +115,7 @@ export class Hello extends Component {
 }
 ```
 
-##### Implement Router
+### Implement Router
 
 ```tsx
 import { Vue, Router } from 'vue-tsx';
@@ -158,20 +158,21 @@ new Vue({
 })
 ```
 
-## Compatibility
+# Compatibility
 
 This repo is only compatible with:
 
 - **Babel 7+**. For Babel 6 support, use [vuejs/babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx)
 - **Vue 2+**. JSX is not supported for older versions.
 
-## Notes
+# Notes
 
 Keep in mind that this project is currently beeing developed.
 Expect bug and unexpected behavior. DONT USE THIS IN PRODUCTION.
 
 Please feel free open a Issue if you encounter problems, have a feature request or questions about the future of this project.
 
+Vue + TSX = ♥️
 
 [more syntax information](https://github.com/vuejs/jsx#syntax)
 
