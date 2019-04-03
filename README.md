@@ -113,6 +113,8 @@ export class Hello extends Component<{ props: Props }> {
 
 ```jsx
 import { Vue } from '@vue-tsx/vue';
+
+//import your Component
 import { Hello } from './components/Hello'
 
 new Vue({
@@ -129,6 +131,7 @@ new Vue({
 ### Watch Method
 
 ```jsx
+// import Watch Decorator
 import { Component, Watch } from '@vue-tsx/vue';
 
 export class Hello extends Component {
@@ -151,22 +154,12 @@ export class Hello extends Component {
 ### Implement Router
 
 ```jsx
-import { Vue } from '@vue-tsx/vue';
+// import vue-tsx router
 import { Router } from '@vue-tsx/vue-router'
+import { Vue } from '@vue-tsx/vue';
 
-const router = new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      component: View1,
-    },
-    {
-      path: '/second',
-      component: View2,
-    },
-  ],
-})
+// define your routes
+const router = new Router({ ... })
 
 Vue.use(Router)
 
@@ -176,15 +169,8 @@ new Vue({
 
   render(h) {
     return <div>
-      <div>
-        <RouterLink to="/">Home</RouterLink>
-      </div>
-
-      <div>
-        <RouterLink to="/second">Second</RouterLink>
-      </div>
-
-      <hr />
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">about</RouterLink>
 
       <RouterView />
     </div>
