@@ -39,6 +39,9 @@ Then add the preset to `.babelrc`:
 
 external:
 - [syntax information](https://github.com/vuejs/jsx#syntax)
+- [difference to react JSX](https://github.com/vuejs/jsx/tree/dev/packages/babel-plugin-transform-vue-jsx#difference-from-react-jsx)
+- [component tip](https://github.com/vuejs/jsx/tree/dev/packages/babel-plugin-transform-vue-jsx#jsx-spread)
+- [JSX spread information](https://github.com/vuejs/jsx/tree/dev/packages/babel-plugin-transform-vue-jsx#jsx-spread)
 - [directives information](https://github.com/vuejs/jsx/tree/dev/packages/babel-plugin-transform-vue-jsx#vue-directives)
 
 ---
