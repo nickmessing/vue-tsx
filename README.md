@@ -94,7 +94,7 @@ interface Props {
 }
 
 // add Props Interface to Component Type Generics
-export class Hello extends Component<{Props}> {
+export class Hello extends Component<{ props: Props }> {
 
   // access Props using $attrs
   private text = this.$attrs.myText
@@ -148,7 +148,8 @@ export class Hello extends Component {
 ### Implement Router
 
 ```jsx
-import { Vue, Router } from '@vue-tsx/vue';
+import { Vue } from '@vue-tsx/vue';
+import { Router } from '@vue-tsx/vue-router'
 
 const router = new Router({
   mode: 'history',
