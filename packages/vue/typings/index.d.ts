@@ -1,7 +1,7 @@
 import { WatchOptions } from 'vue'
 import * as CSS from 'csstype'
 
-export namespace Vue {
+export namespace VueTSX {
   /**
    * Components:
    */
@@ -44,7 +44,8 @@ export namespace Vue {
      * Typescript trick, won't work in code
      */
     $_props: (Options['props'] extends {} ? Options['props'] : {}) &
-      (Listeners<Options['events'] extends {} ? Options['events'] : {}>) & (ScopedSlotsProp<Options['scopedSlots'] extends {} ? Options['scopedSlots'] : {}>)
+      (Listeners<Options['events'] extends {} ? Options['events'] : {}>) &
+      (ScopedSlotsProp<Options['scopedSlots'] extends {} ? Options['scopedSlots'] : {}>)
   }
 
   interface VNode {
@@ -55,19 +56,20 @@ export namespace Vue {
     new <Options extends DefaultOptions = DefaultOptions>(): Component<Options>
   }
 
-  interface Options {
-    el: HTMLElement | string | null
-    render(h: CreateElement): VNode
-  }
-
   class BaseComponent {
     render(h: CreateElement): VNode
   }
 
   interface Instance {}
 
+  interface Options {
+    el: HTMLElement | string | null
+    render(h: VueTSX.CreateElement): VueTSX.VNode
+  }
+
   interface Vue {
     new (options: Options): Instance
+    use(plugin: any): void
   }
 
   type CreateElement = (tag: string | typeof BaseComponent) => VNode
@@ -1542,16 +1544,16 @@ export namespace Vue {
 
 declare global {
   namespace JSX {
-    interface Element extends Vue.VNode {}
-    interface ElementClass extends Vue.BaseComponent {}
+    interface Element extends VueTSX.VNode {}
+    interface ElementClass extends VueTSX.BaseComponent {}
     interface ElementAttributesProperty {
       $_props: {}
     }
-    interface IntrinsicAttributes extends Vue.HTMLAttributes<HTMLElement> {}
-    interface IntrinsicElements extends Vue.Elements {}
+    interface IntrinsicAttributes extends VueTSX.HTMLAttributes<HTMLElement> {}
+    interface IntrinsicElements extends VueTSX.Elements {}
   }
 }
 
-export const Component: Vue.ComponentCreator
-export const Mount: Vue.Vue
-export const Watch: Vue.Watch
+export const Component: VueTSX.ComponentCreator
+export const Vue: VueTSX.Vue
+export const Watch: VueTSX.Watch

@@ -1,4 +1,5 @@
-import { Component, Vue, Mount, Watch } from '@vue-tsx/vue'
+import { Component, VueTSX, Vue, Watch } from '@vue-tsx/vue'
+import { Router, RouterLink, RouterView } from '@vue-tsx/vue-router'
 
 type Props =
   | {
@@ -19,7 +20,7 @@ class MyComponent extends Component<{
   text = 'test'
   counter = 1
 
-  render(h: Vue.CreateElement) {
+  render(h: VueTSX.CreateElement) {
     return (
       <div>
         <input
@@ -45,7 +46,7 @@ class SSComponent extends Component<{
     default?: [string, number?]
   }
 }> {
-  render(h: Vue.CreateElement) {
+  render(h: VueTSX.CreateElement) {
     if (this.$scopedSlots.default) {
       return this.$scopedSlots.default('a', 1)
     }
@@ -53,11 +54,11 @@ class SSComponent extends Component<{
   }
 }
 
-class Cmp extends Component {
+class View1 extends Component {
   data = 'Something here'
 
   beforeCreate() {
-    console.log(this)
+    console.log('beforeCreate', this)
   }
 
   @Watch('data', { deep: true })
@@ -65,7 +66,7 @@ class Cmp extends Component {
     console.log('data Changed', val, oldVal)
   }
 
-  render(h: Vue.CreateElement) {
+  render(h: VueTSX.CreateElement) {
     return (
       <div>
         {this.data}
@@ -101,10 +102,45 @@ class Cmp extends Component {
     )
   }
 }
+class View2 extends Component {
+  render(h: VueTSX.CreateElement) {
+    return <div>Second page :P</div>
+  }
+}
 
-new Mount({
+const router = new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      component: View1,
+    },
+    {
+      path: '/second',
+      component: View2,
+    },
+  ],
+})
+
+Vue.use(Router)
+
+new Vue({
   el: document.getElementById('app'),
+  router,
   render(h) {
-    return <Cmp />
+    return (
+      <div>
+        <ul>
+          <li>
+            <RouterLink to="/">Home</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/second">Second</RouterLink>
+          </li>
+        </ul>
+        <hr />
+        <RouterView />
+      </div>
+    )
   },
 })

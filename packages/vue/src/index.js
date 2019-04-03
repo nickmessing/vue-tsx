@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import RealVue from 'vue'
 
 const lifecycleHooks = [
   'beforeCreate',
@@ -27,8 +27,6 @@ class Component {
 
     const descriptor = Object.getOwnPropertyDescriptors(this.prototype)
 
-    console.log('_testing', this.prototype.$_watch)
-
     for (let key in descriptor) {
       if (key === 'render') {
         options.render = transformRenderFn(this.prototype.render)
@@ -51,7 +49,7 @@ class Component {
     options.name = this.prototype.constructor.name
     options.data = () => {
       const a = new this()
-      a.__proto__ = Object
+      a.__proto__ = null
       return a
     }
 
@@ -64,26 +62,37 @@ class Component {
     this.$_componentOptions = options
   }
 }
-
+export const transformComponent = tag => {
+  return typeof tag === 'function' && tag !== null && tag.$_component
+    ? tag.$_component
+    : typeof tag === 'object' && tag instanceof Promise
+    ? async () => transformComponent(await tag)
+    : tag
+}
 const transformCreateElement = createElement =>
   function(tag, ...args) {
-    return createElement.call(
-      this,
-      typeof tag === 'function' && tag !== null && tag.prototype instanceof Component ? tag.$_component : tag,
-      ...args,
-    )
+    return createElement.call(this, transformComponent(tag), ...args)
   }
 const transformRenderFn = fn =>
   function(h, ...args) {
     return fn.call(this, transformCreateElement(h), ...args)
   }
-class Mount extends Vue {
+class Vue extends RealVue {
   constructor(options) {
     const opts = {
-      ...options,
+      ...Object.keys(options).reduce(
+        (obj, key) => ({
+          ...obj,
+          [key]: !options[key] ? options[key] : options[key].$_TSX_infer ? options[key].$_TSX_infer : options[key],
+        }),
+        {},
+      ),
       render: transformRenderFn(options.render),
     }
     super(opts)
+  }
+  static use(plugin, ...args) {
+    RealVue.use(plugin.$_TSX_plugin, ...args)
   }
 }
 
@@ -100,10 +109,10 @@ function Watch(path, options) {
     if (!target.__proto__.$_watch[path]) {
       target.__proto__.$_watch[path] = {
         ...(options || {}),
-        handler: key
+        handler: key,
       }
     }
   }
 }
 
-export { Component, Mount, Watch }
+export { Component, Vue, Watch }
