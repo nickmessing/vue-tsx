@@ -1,6 +1,6 @@
 {
   "name": "@vue-tsx/vue",
-  "version": "1.0.0",
+  "version": "0.1.0-alpha.0",
   "module": "src/index.js",
   "license": "MIT",
   "typings": "typings/index.d.ts",
