@@ -37,6 +37,7 @@ Then add the preset to `.babelrc`:
 - [Watch Method](#Watch-Method)
 - [Implement Router](#Implement-Router)
 - [Implement Vuex Store](#Implement-Vuex-Store)
+- [Use Vuex Store](#Use-Vuex-Store)
 
 external:
 - [syntax information](https://github.com/vuejs/jsx#syntax)
