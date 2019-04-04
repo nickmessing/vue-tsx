@@ -1,5 +1,7 @@
 import { Component, VueTSX, Vue, Watch } from '@vue-tsx/vue'
 import { Router, RouterLink, RouterView } from '@vue-tsx/vue-router'
+import { namespacedGetter, namespacedMutate, namespacedAction } from '@vue-tsx/vuex'
+import { store } from './store'
 
 type Props =
   | {
@@ -55,7 +57,7 @@ class SSComponent extends Component<{
 }
 
 class View1 extends Component {
-  data = 'Something here'
+  data = '123'
 
   beforeCreate() {
     console.log('beforeCreate', this)
@@ -66,11 +68,37 @@ class View1 extends Component {
     console.log('data Changed', val, oldVal)
   }
 
+  get fromVuex() {
+    return namespacedGetter(this, 'myModule', 'total')
+  }
+  set str(val: string) {
+    namespacedMutate(this, 'myModule', 'setStr', val)
+  }
+  get str() {
+    return namespacedGetter(this, 'myModule', 's')
+  }
+  get num() {
+    return namespacedGetter(this, 'myModule', 'num')
+  }
+
   render(h: VueTSX.CreateElement) {
     return (
       <div>
-        {this.data}
+        {this.data}__
+        {this.fromVuex}__
+        {this.str}__
+        {this.num}__
+        <button on={{ click: () => namespacedMutate(this, 'myModule', 'setNum', this.num + 1) }}>++</button>
+        <button on={{ click: () => namespacedMutate(this, 'myModule', 'setNum', this.num - 1) }}>--</button>
         <br />
+        <button on={{ click: () => namespacedAction(this, 'myModule', 'setNumA', Number(this.data)) }}>
+          Set Num to {Number(this.data)} using Action
+        </button>
+        <button on={{ click: () => namespacedAction(this, 'myModule', 'setStrA', this.data) }}>
+          Set Str to {this.data} using Action
+        </button>
+        <br />
+        <input vModel={this.str} />
         <input vModel={this.data} />
         <br />
         Comp1:
@@ -128,10 +156,12 @@ const router = new Router({
 })
 
 Vue.use(Router)
+;(window as any).store = store
 
 new Vue({
   el: document.getElementById('app'),
   router,
+  store,
   render(h) {
     return (
       <div>
