@@ -184,7 +184,6 @@ new Vue({
 ---
 ### Implement Vuex Store
 
-
 ```jsx
 // Import ModuleOptions Type and Vuex Class
 import { ModuleOptions, Vuex } from '@vue-tsx/vuex'
@@ -222,6 +221,37 @@ new Vue({
     return <div>...</div>
   },
 })
+```
+
+---
+### Use Vuex Store
+
+```jsx
+// import respective Vuex store access methods
+import { getter, mutation, action } from '@vue-tsx/vuex'
+import { Component } from '@vue-tsx/vue';
+
+export class Hello extends Component {
+
+  // use getter
+  get filter () {
+    return getter(this, 'filter')
+  }
+
+  // use mutation
+  set filter(search: string) {
+    mutation(this, 'setFilter', search)
+  }
+
+  // use action
+  triggerSearch (search = this.filter) {
+    action(this, 'search', search)
+  }
+
+  render() {
+    return <div>...</div>
+  }
+}
 ```
 
 # Compatibility
