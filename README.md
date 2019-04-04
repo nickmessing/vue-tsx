@@ -161,10 +161,12 @@ import { Vue } from '@vue-tsx/vue';
 // define your routes
 const router = new Router({ ... })
 
+// use Router
 Vue.use(Router)
 
 new Vue({
   el: document.getElementById('app'),
+  // add router to Vue options
   router,
 
   render() {
