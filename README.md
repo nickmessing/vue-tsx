@@ -190,9 +190,6 @@ new Vue({
 import { ModuleOptions, Vuex } from '@vue-tsx/vuex'
 import { Vue } from '@vue-tsx/vue';
 
-// define your routes
-const router = new Router({ ... })
-
 // define your types
 interface State { ... }
 interface Getters { ... }
