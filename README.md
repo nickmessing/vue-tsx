@@ -36,6 +36,7 @@ Then add the preset to `.babelrc`:
 - [Use Component in TSX](#Use-Component-in-TSX)
 - [Watch Method](#Watch-Method)
 - [Implement Router](#Implement-Router)
+- [Implement Vuex Store](#Implement-Vuex-Store)
 
 external:
 - [syntax information](https://github.com/vuejs/jsx#syntax)
@@ -176,6 +177,49 @@ new Vue({
 
       <RouterView />
     </div>
+  },
+})
+```
+
+---
+### Implement Vuex Store
+
+
+```jsx
+// Import ModuleOptions Type and Vuex Class
+import { ModuleOptions, Vuex } from '@vue-tsx/vuex'
+import { Vue } from '@vue-tsx/vue';
+
+// define your routes
+const router = new Router({ ... })
+
+// define your types
+interface State { ... }
+interface Getters { ... }
+interface Mutations { ... }
+interface Actions { ... }
+
+// define your data and methods
+const rootModule: ModuleOptions<State, Getters, Mutations, Actions> = {
+  state: { ... },
+  getters: { ... },
+  mutations: { ... },
+  actions: { ... },
+}
+
+// define store
+const store = new Vuex({ rootModule })
+
+// use Vuex
+Vue.use(Vuex)
+
+new Vue({
+  el: document.getElementById('app'),
+  // add store to Vue options
+  store,
+
+  render() {
+    return <div>...</div>
   },
 })
 ```
