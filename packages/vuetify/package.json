@@ -1,13 +1,14 @@
 {
-  "name": "@vue-tsx/vue",
+  "name": "@vue-tsx/vuetify",
   "version": "0.1.0",
   "module": "src/index.js",
   "license": "MIT",
   "typings": "typings/index.d.ts",
   "dependencies": {
+    "@vue-tsx/vue": "^0.1.0",
     "csstype": "^2.6.3",
     "tslib": "^1.9.3",
     "typescript": "^3.4.1",
-    "vue": "^2.6.10"
+    "vuetify": "^1.5.9"
   }
 }
