@@ -14,7 +14,9 @@ export namespace VueTSX {
         : (eventName: P, payload: Events[P]) => void
     }[keyof Events]
   >
-  type Listeners<Events> = { on?: { [P in keyof Events]?: (payload: Events[P]) => void } }
+  type Listeners<Events> = {
+    on?: ({ [P in keyof Events]?: (payload: Events[P]) => void })
+  }
   type ScopedSlot<Args, T = Exclude<Args, void>> = (...args: T extends any[] ? T : []) => VNode
   type ScopedSlots<SS> = { [T in keyof SS]: SS[T] extends void ? void | ScopedSlot<SS[T]> : ScopedSlot<SS[T]> }
   type ScopedSlotsProp<SS> = {} extends ScopedSlots<SS>
@@ -44,7 +46,7 @@ export namespace VueTSX {
      * Typescript trick, won't work in code
      */
     $_props: (Options['props'] extends {} ? Options['props'] : {}) &
-      (Listeners<Options['events'] extends {} ? Options['events'] : {}>) &
+      (Listeners<(Options['events'] extends {} ? Options['events'] : {}) & HTMLElementEventMap<HTMLElement>>) &
       (ScopedSlotsProp<Options['scopedSlots'] extends {} ? Options['scopedSlots'] : {}>)
   }
 
@@ -71,7 +73,7 @@ export namespace VueTSX {
 
   interface Vue {
     new (options: Options): Instance
-    use(plugin: any): void
+    use(plugin: any, options?: any): void
   }
 
   type CreateElement = (tag: string | typeof BaseComponent) => VNode
