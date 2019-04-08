@@ -1,6 +1,6 @@
 {
   "name": "test",
-  "version": "0.1.0",
+  "version": "0.1.1-alpha.0",
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.4.0",
-    "@vue-tsx/vue": "^0.1.0",
-    "@vue-tsx/vue-router": "^0.1.0",
-    "@vue-tsx/vuex": "^0.1.0",
+    "@vue-tsx/vue": "^0.1.1-alpha.0",
+    "@vue-tsx/vue-router": "^0.1.1-alpha.0",
+    "@vue-tsx/vuex": "^0.1.1-alpha.0",
     "@vue/babel-preset-jsx": "^1.0.0-beta.3",
     "babel-loader": "^8.0.5",
     "ts-loader": "^5.3.3",

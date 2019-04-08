@@ -1,11 +1,11 @@
 {
   "name": "@vue-tsx/vue-router",
-  "version": "0.1.0",
+  "version": "0.1.1-alpha.0",
   "module": "src/index.js",
   "license": "MIT",
   "typings": "typings/index.d.ts",
   "dependencies": {
-    "@vue-tsx/vue": "^0.1.0",
+    "@vue-tsx/vue": "^0.1.1-alpha.0",
     "csstype": "^2.6.3",
     "tslib": "^1.9.3",
     "typescript": "^3.4.1",
