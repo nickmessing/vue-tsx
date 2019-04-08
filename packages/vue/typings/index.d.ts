@@ -46,8 +46,10 @@ export namespace VueTSX {
      * Typescript trick, won't work in code
      */
     $_props: (Options['props'] extends {} ? Options['props'] : {}) &
-      (Listeners<(Options['events'] extends {} ? Options['events'] : {}) & HTMLElementEventMap<HTMLElement>>) &
+      (Listeners<(Options['events'] extends {} ? Options['events'] : {}) & { [key: string]: any }>) &
       (ScopedSlotsProp<Options['scopedSlots'] extends {} ? Options['scopedSlots'] : {}>)
+
+    render(h: CreateElement): VNode
   }
 
   interface VNode {

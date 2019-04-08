@@ -9,5 +9,6 @@
     "tslib": "^1.9.3",
     "typescript": "^3.4.1",
     "vue": "^2.6.10"
-  }
+  },
+  "gitHead": "4e2a14a18bcfcc0ea2406e89f581729d57b64cd2"
 }

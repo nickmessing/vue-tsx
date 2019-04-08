@@ -12,14 +12,15 @@ const lifecycleHooks = [
 ]
 
 class Component {
-  static get $_component() {
-    if (!this.$_componentOptions) {
+  static get $_TSX_component() {
+    if (!this.$_TSX_componentOptions) {
       this.$_buildComponent()
     }
-    return this.$_componentOptions
+    return this.$_TSX_componentOptions
   }
 
   static $_buildComponent() {
+    console.log('building component')
     const options = {
       methods: {},
       computed: {},
@@ -29,6 +30,7 @@ class Component {
 
     for (let key in descriptor) {
       if (key === 'render') {
+        console.log('building render')
         options.render = transformRenderFn(this.prototype.render)
       } else if (key !== 'constructor') {
         if (descriptor[key].value) {
@@ -59,14 +61,12 @@ class Component {
       options.watch = dummy.$_watch
     }
 
-    this.$_componentOptions = options
+    this.$_TSX_componentOptions = options
   }
 }
 export const transformComponent = tag => {
-  return typeof tag === 'function' && tag !== null && tag.$_component
-    ? tag.$_component
-    : typeof tag === 'object' && tag instanceof Promise
-    ? async () => transformComponent(await tag)
+  return tag !== null && tag.$_TSX_component
+    ? tag.$_TSX_component
     : tag
 }
 const transformCreateElement = createElement =>
