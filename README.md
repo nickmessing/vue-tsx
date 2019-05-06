@@ -36,6 +36,8 @@ Then add the preset to `.babelrc`:
 - [Use Component in TSX](#Use-Component-in-TSX)
 - [Watch Method](#Watch-Method)
 - [Implement Router](#Implement-Router)
+- [Implement Vuex Store](#Implement-Vuex-Store)
+- [Use Vuex Store](#Use-Vuex-Store)
 
 external:
 - [syntax information](https://github.com/vuejs/jsx#syntax)
@@ -161,10 +163,12 @@ import { Vue } from '@vue-tsx/vue';
 // define your routes
 const router = new Router({ ... })
 
+// use Router
 Vue.use(Router)
 
 new Vue({
   el: document.getElementById('app'),
+  // add router to Vue options
   router,
 
   render() {
@@ -176,6 +180,76 @@ new Vue({
     </div>
   },
 })
+```
+
+---
+### Implement Vuex Store
+
+```jsx
+// Import ModuleOptions Type and Vuex Class
+import { ModuleOptions, Vuex } from '@vue-tsx/vuex'
+import { Vue } from '@vue-tsx/vue';
+
+// define your types
+interface State { ... }
+interface Getters { ... }
+interface Mutations { ... }
+interface Actions { ... }
+
+// define your data and methods
+const rootModule: ModuleOptions<State, Getters, Mutations, Actions> = {
+  state: { ... },
+  getters: { ... },
+  mutations: { ... },
+  actions: { ... },
+}
+
+// define store
+const store = new Vuex({ rootModule })
+
+// use Vuex
+Vue.use(Vuex)
+
+new Vue({
+  el: document.getElementById('app'),
+  // add store to Vue options
+  store,
+
+  render() {
+    return <div>...</div>
+  },
+})
+```
+
+---
+### Use Vuex Store
+
+```jsx
+// import respective Vuex store access methods
+import { getter, mutation, action } from '@vue-tsx/vuex'
+import { Component } from '@vue-tsx/vue';
+
+export class Hello extends Component {
+
+  // use getter
+  get filter () {
+    return getter(this, 'filter')
+  }
+
+  // use mutation
+  set filter(search: string) {
+    mutation(this, 'setFilter', search)
+  }
+
+  // use action
+  triggerSearch (search = this.filter) {
+    action(this, 'search', search)
+  }
+
+  render() {
+    return <div>...</div>
+  }
+}
 ```
 
 # Compatibility
