@@ -5,9 +5,9 @@
   "license": "MIT",
   "typings": "typings/index.d.ts",
   "dependencies": {
-    "csstype": "^2.6.3",
+    "csstype": "^2.6.4",
     "tslib": "^1.9.3",
-    "typescript": "^3.4.1",
+    "typescript": "^3.4.5",
     "vue": "^2.6.10"
   },
   "gitHead": "4e2a14a18bcfcc0ea2406e89f581729d57b64cd2"

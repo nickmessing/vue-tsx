@@ -6,10 +6,10 @@
   "typings": "typings/index.d.ts",
   "dependencies": {
     "@vue-tsx/vue": "^0.1.1-alpha.0",
-    "csstype": "^2.6.3",
+    "csstype": "^2.6.4",
     "tslib": "^1.9.3",
-    "typescript": "^3.4.1",
-    "vuetify": "^1.5.9"
+    "typescript": "^3.4.5",
+    "vuetify": "^1.5.14"
   },
   "gitHead": "4e2a14a18bcfcc0ea2406e89f581729d57b64cd2",
   "devDependencies": {
